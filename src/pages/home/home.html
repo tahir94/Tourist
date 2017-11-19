@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-title style="display:inline-block;">
+      Tourist-App
+    </ion-title>
+    <button ion-button style="float: right;display:inline-block;" (click)="signout()">Sign Out</button>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionInput)="updateSearchResults()" [(ngModel)]="Destination"></ion-searchbar>
+
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="calculateAndDisplayRoute(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+
+  <div id="map"></div>
+
+</ion-content>
